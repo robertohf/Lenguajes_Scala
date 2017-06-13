@@ -17,6 +17,7 @@ import com.sun.net.httpserver.HttpServer
 object Main {
   def main(args: Array[String]): Unit = {
 
+    println("Creating server...")
     val server = HttpServer.create(new InetSocketAddress(8080), 0)
     server.createContext("/ejercicio1", new ejercicio1())
     server.createContext("/ejercicio2", new ejercicio2())
@@ -24,6 +25,7 @@ object Main {
     server.createContext("/ejercicio4", new ejercicio4())
     server.setExecutor(null)
     server.start()
+    println("Server listening in port 8080")
   }
 }
 
@@ -41,7 +43,7 @@ class ejercicio1() extends HttpHandler{
       val origen = idk(3).replace(' ', '+')
       val destino = idk(7).replace(' ', '+')
 
-      val request_url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origen + "&destination=" + destino + "&key=AIzaSyAzzrnc71pLvEvOdY322DQwwbUsFQZT7Vg"
+      val request_url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origen + "&destination=" + destino + "&key=AIzaSyBmelZAhVTODrw_gjtueTuHEs9Aka_z9nM"
       val url = new URL(request_url)
 
       val br = new BufferedReader(new InputStreamReader(url.openStream()))
@@ -107,7 +109,7 @@ class ejercicio2() extends HttpHandler{
       val test = new String(response, Charset.forName("UTF-8"))
       val idk = test.split("\"")
       val origen = idk(3).replace(' ', '+')
-      var request_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+origen+"&key=AIzaSyDlWabEzv6sC9AW1F_C1rc_nOz9o2nm0Bg"
+      var request_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+origen+"&key=AIzaSyBmelZAhVTODrw_gjtueTuHEs9Aka_z9nM"
       var url = new URL(request_url)
       var br = new BufferedReader(new InputStreamReader(url.openStream()))
       var maps: String = ""
